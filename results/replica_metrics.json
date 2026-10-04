@@ -1,0 +1,237 @@
+{
+  "replication_type": "masked replica",
+  "model_scope": "plant-hour",
+  "python_version": "3.14.5",
+  "sklearn_version": "1.9.0",
+  "pandas_version": "3.0.3",
+  "numpy_version": "2.4.6",
+  "random_seed": 42,
+  "cv_folds": 5,
+  "split_counts": {
+    "train": 7204,
+    "test": 1789,
+    "val": 1786
+  },
+  "split_dates": {
+    "train": [
+      "2052-01-01",
+      "2052-08-31"
+    ],
+    "val": [
+      "2052-09-01",
+      "2052-10-31"
+    ],
+    "test": [
+      "2052-11-01",
+      "2052-12-31"
+    ]
+  },
+  "feature_columns": [
+    "plant_index",
+    "assignment_hour",
+    "weekday",
+    "month",
+    "is_weekend",
+    "cycle_time_robust",
+    "product_strength_robust",
+    "product_slump_robust",
+    "lead_time_robust",
+    "service_latitude_robust",
+    "service_longitude_robust",
+    "trucks_active_robust",
+    "operating_hours_robust",
+    "avg_load_m3_robust",
+    "cycle_pressure_robust",
+    "hour_sin",
+    "hour_cos",
+    "scheduled_hour_sin",
+    "scheduled_hour_cos",
+    "weekday_sin",
+    "weekday_cos",
+    "month_sin",
+    "month_cos",
+    "product_strength_missing",
+    "product_slump_missing",
+    "product_is_premium",
+    "product_has_modifier",
+    "has_enrichment_lookup",
+    "scheduled_minutes_missing",
+    "lead_time_missing",
+    "has_service_zone",
+    "is_special_route",
+    "plant_Plant_A",
+    "plant_Plant_B",
+    "plant_Plant_C",
+    "plant_Plant_D",
+    "family_Standard",
+    "family_Structural",
+    "family_Pavement",
+    "family_Flowable",
+    "family_Fill",
+    "family_Specialty"
+  ],
+  "results_table": [
+    {
+      "model_family": "Random Forest",
+      "best_run": "Random Forest max_depth=None, min_samples_leaf=3",
+      "hyperparameters": {
+        "bootstrap": true,
+        "ccp_alpha": 0.0,
+        "criterion": "squared_error",
+        "max_depth": null,
+        "max_features": "sqrt",
+        "max_leaf_nodes": null,
+        "max_samples": null,
+        "min_impurity_decrease": 0.0,
+        "min_samples_leaf": 3,
+        "min_samples_split": 2,
+        "min_weight_fraction_leaf": 0.0,
+        "monotonic_cst": null,
+        "n_estimators": 300,
+        "n_jobs": -1,
+        "oob_score": false,
+        "random_state": 42,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "train": {
+        "mae": 2.378516558941473,
+        "rmse": 4.31527774349245,
+        "smape": 25.594539734828146
+      },
+      "validation": {
+        "mae": 4.1690227936477156,
+        "rmse": 7.7361455153024545,
+        "smape": 39.58931627739248
+      },
+      "cv": {
+        "mae_mean": 4.107970574075867,
+        "mae_std": 0.19404342353534346,
+        "fold_mae": [
+          4.346074455308725,
+          4.136610487661557,
+          4.084699140971789,
+          4.163599472790107,
+          3.8088693136471563
+        ]
+      },
+      "test": {
+        "mae": 4.081459427762699,
+        "rmse": 7.05047530628008,
+        "smape": 38.51353928731949
+      }
+    },
+    {
+      "model_family": "Elastic Net",
+      "best_run": "Elastic Net alpha=0.1, l1_ratio=0.8",
+      "hyperparameters": {
+        "alpha": 0.1,
+        "copy_X": true,
+        "fit_intercept": true,
+        "l1_ratio": 0.8,
+        "max_iter": 20000,
+        "positive": false,
+        "precompute": false,
+        "random_state": 42,
+        "selection": "cyclic",
+        "tol": 0.0001,
+        "warm_start": false
+      },
+      "train": {
+        "mae": 4.932681305408307,
+        "rmse": 7.516514272915971,
+        "smape": 63.584875802334174
+      },
+      "validation": {
+        "mae": 5.187159895259492,
+        "rmse": 8.307490655973988,
+        "smape": 63.899143315463014
+      },
+      "cv": {
+        "mae_mean": 4.912690377224694,
+        "mae_std": 0.10244721113992908,
+        "fold_mae": [
+          4.891142615063953,
+          4.869896384869711,
+          4.91883720910776,
+          5.079546657484263,
+          4.80402901959778
+        ]
+      },
+      "test": null
+    },
+    {
+      "model_family": "Ridge Regression",
+      "best_run": "Ridge Regression alpha=50.0",
+      "hyperparameters": {
+        "alpha": 50.0,
+        "copy_X": true,
+        "fit_intercept": true,
+        "max_iter": null,
+        "positive": false,
+        "random_state": 42,
+        "solver": "auto",
+        "tol": 0.0001
+      },
+      "train": {
+        "mae": 4.935555501309866,
+        "rmse": 7.476165467173743,
+        "smape": 64.76667680951694
+      },
+      "validation": {
+        "mae": 5.244613584891561,
+        "rmse": 8.291211004061136,
+        "smape": 64.51409736645937
+      },
+      "cv": {
+        "mae_mean": 4.943272855022025,
+        "mae_std": 0.11171623350919284,
+        "fold_mae": [
+          4.945416926705042,
+          4.8883045761671235,
+          4.968962596466088,
+          5.108279607436878,
+          4.805400568334996
+        ]
+      },
+      "test": null
+    },
+    {
+      "model_family": "Historical Median Baseline",
+      "best_run": "Historical Median Baseline",
+      "hyperparameters": {
+        "constant": null,
+        "quantile": null,
+        "strategy": "median"
+      },
+      "train": {
+        "mae": 7.007560660744032,
+        "rmse": 12.312175203646204,
+        "smape": 71.63963417323814
+      },
+      "validation": {
+        "mae": 7.538250279955207,
+        "rmse": 13.58931778078651,
+        "smape": 73.01357493721915
+      },
+      "cv": {
+        "mae_mean": 7.104871333333333,
+        "mae_std": 0.15774238337903154,
+        "fold_mae": [
+          7.2217899999999995,
+          7.297608333333335,
+          7.020630833333333,
+          7.082193333333333,
+          6.9021341666666665
+        ]
+      },
+      "test": null
+    }
+  ],
+  "selected_model": "Random Forest",
+  "final_test_metrics": {
+    "mae": 4.081459427762699,
+    "rmse": 7.05047530628008,
+    "smape": 38.51353928731949
+  }
+}

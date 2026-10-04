@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools==82.0.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ready-mix-demand-forecasting"
+version = "0.1.0"
+description = "Chronological active plant-hour demand modeling from a masked replica"
+requires-python = ">=3.12"
+license = "MIT"
+dependencies = [
+  "numpy==2.4.6",
+  "pandas==3.0.3",
+  "scikit-learn==1.9.0",
+  "matplotlib==3.11.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==9.0.3", "ruff==0.15.20"]
+
+[project.scripts]
+ready-mix = "ready_mix.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+extend-exclude = ["out"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = ["E501"]
